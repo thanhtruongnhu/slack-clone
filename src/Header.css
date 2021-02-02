@@ -1,0 +1,8 @@
+.header {
+    display: flex; /*By default, this will go into a row*/
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+    background-color: var(--slack-color); /* Have to define what is '--slack-color', it should be defined in App.css*/
+    color: white;
+}
