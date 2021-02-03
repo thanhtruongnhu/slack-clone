@@ -1,0 +1,7 @@
+.sidebarOption {
+    display: flex;
+    align-items: center; /*adjust the text into the center position in height*/
+    font-size: 12px;
+    padding-left: 2px;
+    cursor: pointer;
+}
