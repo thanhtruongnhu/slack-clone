@@ -4,6 +4,7 @@ import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
 import CreateIcon from '@material-ui/icons/Create';
 import InsertCommentIcon from '@material-ui/icons/InsertComment'; 
 import SidebarOption from './SidebarOption'
+import { Apps, BookmarkBorder, Drafts, ExpandLess, FileCopy, Inbox, PeopleAlt, ExpandMore, Add } from '@material-ui/icons';
 
 function Sidebar() {
     return (
@@ -21,7 +22,20 @@ function Sidebar() {
                 
             </div>
             <SidebarOption Icon={InsertCommentIcon} title="Threads" /> {/*Use capital "I" in Icon becuz, we passing a component as a prop*/ }
-            <SidebarOption title="Youtube" />
+            <SidebarOption Icon={Inbox} title="Mentions & reactions" /> 
+            <SidebarOption Icon={Drafts} title="Saved items" /> 
+            <SidebarOption Icon={BookmarkBorder} title="Channel browser" /> 
+            <SidebarOption Icon={PeopleAlt} title="People & user group" /> 
+            <SidebarOption Icon={Apps} title="Apps" /> 
+            <SidebarOption Icon={FileCopy} title="File browser" /> 
+            <SidebarOption Icon={ExpandLess} title="Show less" /> 
+             <hr /> {/*Horizontal row */}
+             <SidebarOption Icon={ExpandMore} title="Channels" />
+             <SidebarOption Icon={Add} title="Channels" />
+
+             {/*Connect to dataBase (dB) and list all channels */}
+             {/* <SidebarOption /> */}
+
         </div>
     )
 }
