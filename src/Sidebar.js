@@ -7,6 +7,8 @@ import SidebarOption from './SidebarOption'
 import { Apps, BookmarkBorder, Drafts, ExpandLess, FileCopy, Inbox, PeopleAlt, ExpandMore, Add } from '@material-ui/icons';
 
 function Sidebar() {
+const [channels, setChannels] = useState([]);
+
     return (
         <div className="sidebar">
             <div className="sidebar__header">
