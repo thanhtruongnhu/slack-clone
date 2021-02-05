@@ -1,13 +1,25 @@
-import React from 'react'
+import React, { useState, useEffect} from 'react'
 import './Sidebar.css'
 import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
 import CreateIcon from '@material-ui/icons/Create';
 import InsertCommentIcon from '@material-ui/icons/InsertComment'; 
 import SidebarOption from './SidebarOption'
 import { Apps, BookmarkBorder, Drafts, ExpandLess, FileCopy, Inbox, PeopleAlt, ExpandMore, Add } from '@material-ui/icons';
+import db from "./firebase"
 
 function Sidebar() {
 const [channels, setChannels] = useState([]);
+
+useEffect(() => {
+    // Get the data from Firestore database (Run this code ONCE when the sidebar component loading (That's why we use empty bracket [] as dependecy))
+    db.collection('room').onSnapshot(snapshot => (
+        //take a snapshot of current states, components... of the database
+        setChannels(snapshot.docs.map(doc => ({
+            id: doc.id, 
+            name: doc.data().name,
+        }))
+    )))
+}, [])
 
     return (
         <div className="sidebar">
@@ -33,10 +45,14 @@ const [channels, setChannels] = useState([]);
             <SidebarOption Icon={ExpandLess} title="Show less" /> 
              <hr /> {/*Horizontal row */}
              <SidebarOption Icon={ExpandMore} title="Channels" />
+             <hr />
              <SidebarOption Icon={Add} title="Channels" />
 
-             {/*Connect to dataBase (dB) and list all channels */}
+             {/*Render all channels (based on database acquired from Firestore) */}
              {/* <SidebarOption /> */}
+             {channels.map((channel) => (
+                 <SidebarOption title={channel.name} id={channel.id}/>
+             ))}
 
         </div>
     )
