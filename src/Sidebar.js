@@ -10,10 +10,12 @@ import db from "./firebase"
 function Sidebar() {
 const [channels, setChannels] = useState([]);
 
-useEffect(() => {
     // Get the data from Firestore database (Run this code ONCE when the sidebar component loading (That's why we use empty bracket [] as dependecy))
-    db.collection('room').onSnapshot(snapshot => (
-        //take a snapshot of current states, components... of the database
+    // onSnapshot: setup an active listener to react to any changes to the query (Specifically, attaches a listener for QuerySnapshot events)
+    // snapshot: is QuerySnapshot (A QuerySnapshot contains zero or more QueryDocumentSnapshot objects representing the results of a query)
+    // docs: An array of all the documents in the QuerySnapshot
+    // The map() function is used to iterate over an array and manipulate or change data items. The map() function expects a callback as the argument and executes it once for each element in the array.  NOTE: 'doc' is an element in the array 'docs'
+useEffect(() => { db.collection('room').onSnapshot(snapshot => (        
         setChannels(snapshot.docs.map(doc => ({
             id: doc.id, 
             name: doc.data().name,
@@ -50,7 +52,7 @@ useEffect(() => {
 
              {/*Render all channels (based on database acquired from Firestore) */}
              {/* <SidebarOption /> */}
-             {channels.map((channel) => (
+             {channels.map(channel => (
                  <SidebarOption title={channel.name} id={channel.id}/>
              ))}
 
