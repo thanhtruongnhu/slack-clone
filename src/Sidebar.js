@@ -6,12 +6,14 @@ import InsertCommentIcon from '@material-ui/icons/InsertComment';
 import SidebarOption from './SidebarOption'
 import { Apps, BookmarkBorder, Drafts, ExpandLess, FileCopy, Inbox, PeopleAlt, ExpandMore, Add } from '@material-ui/icons';
 import db from "./firebase"
+import { useStateValue } from './StateProvider';
 
 function Sidebar() {
 const [channels, setChannels] = useState([]);
-
+const [{ user }] = useStateValue()
+    // useEffect: update the Effect in every render
     // Get the data from Firestore database (Run this code ONCE when the sidebar component loading (That's why we use empty bracket [] as dependecy))
-    // onSnapshot: setup an active listener to react to any changes to the query (Specifically, attaches a listener for QuerySnapshot events)
+    // onSnapshot (this function is the Effect (Data fetching) in this case): setup an active listener to react to any changes to the query (Specifically, attaches a listener for QuerySnapshot events)
     // snapshot: is QuerySnapshot (A QuerySnapshot contains zero or more QueryDocumentSnapshot objects representing the results of a query)
     // docs: An array of all the documents in the QuerySnapshot
     // The map() function is used to iterate over an array and manipulate or change data items. The map() function expects a callback as the argument and executes it once for each element in the array.  NOTE: 'doc' is an element in the array 'docs'
@@ -30,8 +32,7 @@ useEffect(() => { db.collection('room').onSnapshot(snapshot => (
                     <h2> Main Board</h2>
                     <h3> 
                         <FiberManualRecordIcon />
-                        Kyle Nhu
-                        
+                        {user?.displayName}                        
                     </h3>
                 </div>
                 <CreateIcon />
@@ -48,7 +49,7 @@ useEffect(() => { db.collection('room').onSnapshot(snapshot => (
              <hr /> {/*Horizontal row */}
              <SidebarOption Icon={ExpandMore} title="Channels" />
              <hr />
-             <SidebarOption Icon={Add} title="Channels" />
+             <SidebarOption Icon={Add} addChannelOption title="Channels" />
 
              {/*Render all channels (based on database acquired from Firestore) */}
              {/* <SidebarOption /> */}
