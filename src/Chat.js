@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom"
 import { InfoOutlined, StarBorderOutlined } from '@material-ui/icons'
 import db from "./firebase"
 import Message from './Message'
+import ChatInput from './ChatInput'
 
 function Chat() {
     // useParams hook helps us to access the URL parameters from a current route.
@@ -56,6 +57,8 @@ function Chat() {
                     />
                 ))}
             </div>
+
+            <ChatInput channelName={roomDetails?.name} channelId={roomId}/>
         </div>
     )
 }
