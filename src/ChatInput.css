@@ -3,21 +3,24 @@
 }
 
 .chatInput > form {
+    /* bottom: 10px; */
     position: relative;
     display: flex;
     justify-content: center;
 }
 
-.chatInput > form > input {
-    position: fixed;
-    bottom: 30px;
+ .chatInput > form > input {
+    /* flex: 0.7;  */
+    position: fixed; 
+    bottom: 10px;
     width: 70%;
     border: 1px solid gray;
     border-radius: 3px;
     padding: 20px;
-}
+} 
 
 /* The reason we need the button: make use the onClick  */
-.chatInput > form > button {
-    display: none !important;
-}
+.chatInput > form > button {     
+    display: none !important; 
+} 
+

@@ -34,8 +34,8 @@ function Login() {
                     alt=""
                 />
                 <h1>Sign in to Kyle's Slack Clone</h1>
-                <a href="https://www.github.com/">Visit my github repo!</a>
-                {/* <p>https://github.com/thanhtruongnhu</p> */}
+                {/* <a href="https://www.github.com/">Visit my github repo!</a> */}
+                <p>https://github.com/thanhtruongnhu</p>
                 <Button onClick={signIn}>Sign In With Google</Button>
             </div>
         </div>

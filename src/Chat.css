@@ -5,12 +5,13 @@
     padding-bottom: 150px;
 }
 
-.chat__header {
+.chat__header {    
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 20px;
     border-bottom: 1px solid lightgray;
+    
 }
 
 .chat__channelName {
